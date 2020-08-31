@@ -25,7 +25,7 @@ public class DemoTest {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DemoConfiguration.class);
 //		Object bean = context.getBean("demo");
 //		System.out.println(bean);
-		Thread.sleep(3000000);
+		Thread.sleep(5000000);
 		context.close();
 	}
 }
