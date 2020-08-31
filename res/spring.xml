@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+	<!-- 配置扫描器。 -->
+	<context:component-scan base-package="com.demo.task" />
+	<!-- 开启基于注解的配置。 -->
+	<task:annotation-driven executor="demoExecutor" scheduler="demoScheduler" />
+	<!-- 配置调度线程池。 -->
+	<task:scheduler id="demoScheduler" pool-size="5" />
+	<!-- 配置定时任务，使用调度线程池。 -->
+<!-- 	<task:scheduled-tasks scheduler="demoScheduler">
+		<task:scheduled ref="demoTask" method="taskA" cron="0/10 * * * * ?" />
+		<task:scheduled ref="demoTask" method="taskB" cron="0/5 * * * * ?" />
+	</task:scheduled-tasks> -->
+	<!-- 配置执行线程池。 -->
+	<task:executor id="demoExecutor" pool-size="5" />
+</beans>
